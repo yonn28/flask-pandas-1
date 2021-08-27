@@ -32,17 +32,17 @@ jobs:
     
     - name: Build
       run: |
-        docker build -t gcr.io/${{ secrets.GCP_PROJECT_ID }}/dash-ds4-examaple:latest .
+        docker build -t gcr.io/${{ secrets.GCP_PROJECT_ID }}/microservice1:latest .
 
     - name: Push
       run: |
-        docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/dash-ds4-examaple:latest
+        docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/microservice1:latest
 
     - name: Deploy
       run: |
-        gcloud run deploy dash-ds4-examaple  \
+        gcloud run deploy microservice1  \
         --region northamerica-northeast1  \
-        --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/dash-ds4-examaple  \
+        --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/microservice1  \
         --platform managed \
         --allow-unauthenticated \
         --project ${{ secrets.GCP_PROJECT_ID }} \
