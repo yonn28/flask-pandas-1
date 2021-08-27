@@ -7,6 +7,6 @@ COPY . ./
 RUN python -m pip install -r requirements.txt
 #RUN pip install -U numpy
 
-EXPOSE 8080
+EXPOSE 3000
 
 CMD python index.py  
