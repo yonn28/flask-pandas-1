@@ -7,7 +7,7 @@ COPY . ./
 RUN python -m pip install -r requirements.txt
 #RUN pip install -U numpy
 # Expose port 5000
-EXPOSE 3000
-ENV PORT 3000
+EXPOSE 8080
+ENV PORT 8080
 
 CMD python index.py
