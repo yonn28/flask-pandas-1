@@ -33,14 +33,14 @@ porcentajes_mes.columns = ['FechaValoracionNutricional_MesAño', 'EstadoPesoTall
 @app.route('/api/v1/x', methods=['GET'])
 def ploting_get_x():
     x = porcentajes_mes['FechaValoracionNutricional_MesAño'].unique().strftime('%b')[:12]
-    df_list = x.values.tolist()
+    df_list = x.tolist()
     JSONP_data = jsonpify(df_list)
     return JSONP_data
 
 @app.route('/api/v1/y', methods=['GET'])
 def ploting_get_y():
     y = porcentajes_mes[porcentajes_mes['EstadoPesoTalla_New'] == 'Desnutricion']['Porcentajes']
-    df_list = y.values.tolist()
+    df_list = y.tolist()
     JSONP_data = jsonpify(df_list)
     return JSONP_data
 
