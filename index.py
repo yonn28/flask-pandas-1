@@ -1,6 +1,8 @@
 from flask import Flask, jsonify
 import pandas as pd
 from itertools import cycle
+from flask_cors import CORS
+from flask_sslify import SSLify
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
