@@ -23,18 +23,18 @@ def nombres(x):
 
 base_pivot['EstadoPesoTalla_New'] = base_pivot['EstadoPesoTalla'].apply(nombres)
 base_pivot['FechaValoracionNutricional'] = pd.to_datetime(base_pivot['FechaValoracionNutricional'])
-base_pivot['FechaValoracionNutricional_MesAño'] = base_pivot['FechaValoracionNutricional'].dt.to_period('M')
-frecuencias_mes = base_pivot[['FechaValoracionNutricional_MesAño','EstadoPesoTalla_New']].groupby(['FechaValoracionNutricional_MesAño','EstadoPesoTalla_New']).size()
+base_pivot['FechaValoracionNutricional_MesAno'] = base_pivot['FechaValoracionNutricional'].dt.to_period('M')
+frecuencias_mes = base_pivot[['FechaValoracionNutricional_MesAno','EstadoPesoTalla_New']].groupby(['FechaValoracionNutricional_MesAno','EstadoPesoTalla_New']).size()
 porcentajes_mes = frecuencias_mes.groupby(level=0).apply(lambda x : 100 * x / float(x.sum()))
 porcentajes_mes = porcentajes_mes.reset_index()
-porcentajes_mes.columns = ['FechaValoracionNutricional_MesAño', 'EstadoPesoTalla_New', 'Porcentajes']
+porcentajes_mes.columns = ['FechaValoracionNutricional_MesAno', 'EstadoPesoTalla_New', 'Porcentajes']
 
 
 
 
 @app.route('/api/v1/x', methods=['GET'])
 def ploting_get_x():
-    x = porcentajes_mes['FechaValoracionNutricional_MesAño'].unique().strftime('%b')[:12]
+    x = porcentajes_mes['FechaValoracionNutricional_MesAno'].unique().strftime('%b')[:12]
     df_list = x.tolist()
     JSONP_data = jsonify(df_list)
     return JSONP_data
