@@ -29,7 +29,7 @@ porcentajes_mes = frecuencias_mes.groupby(level=0).apply(lambda x : 100 * x / fl
 porcentajes_mes = porcentajes_mes.reset_index()
 porcentajes_mes.columns = ['FechaValoracionNutricional_MesAno', 'EstadoPesoTalla_New', 'Porcentajes']
 
-
+df_copy = porcentajes_mes.copy()
 
 
 @app.route('/api/v1/x', methods=['GET'])
@@ -48,8 +48,9 @@ def ploting_get_y():
 
 @app.route('/api/v1/df', methods=['GET'])
 def getting_dataframe():
-    porcentajes_mes['FechaValoracionNutricional_MesAno']=porcentajes_mes['FechaValoracionNutricional_MesAno'].astype(str)
-    return jsonify(porcentajes_mes.to_dict("records"))
+    
+    df_copy['FechaValoracionNutricional_MesAno']=df_copy['FechaValoracionNutricional_MesAno'].astype(str)
+    return jsonify(df_copy.to_dict("records"))
 
 
 if __name__ == '__main__':
