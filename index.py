@@ -48,7 +48,7 @@ def ploting_get_y():
 
 @app.route('/api/v1/df', methods=['GET'])
 def getting_dataframe():
-    return porcentajes_mes.to_dict("records")
+    return porcentajes_mes.to_string()
 
 
 if __name__ == '__main__':
