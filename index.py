@@ -48,8 +48,8 @@ def ploting_get_y():
 
 @app.route('/api/v1/df', methods=['GET'])
 def getting_dataframe():
-    return jsonify(porcentajes_mes.to_dict("records"))
+    return porcentajes_mes.to_dict("records")
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=8080,host="0.0.0.0")# change host to 0.0.0.0 and port 8080
+    app.run(debug=True, port=3000)# change host to 0.0.0.0 and port 8080
