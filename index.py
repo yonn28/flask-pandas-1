@@ -48,7 +48,8 @@ def ploting_get_y():
 
 @app.route('/api/v1/df', methods=['GET'])
 def getting_dataframe():
-    return porcentajes_mes.to_string()
+    porcentajes_mes['FechaValoracionNutricional_MesAno']=porcentajes_mes['FechaValoracionNutricional_MesAno'].astype(str)
+    return jsonify(porcentajes_mes.to_dict("records"))
 
 
 if __name__ == '__main__':
